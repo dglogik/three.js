@@ -16,11 +16,24 @@ Menubar.View = function ( editor ) {
 	options.setClass( 'options' );
 	container.add( options );
 
+	// Default theme
+
+	var option = new UI.Panel();
+	option.setClass( 'option' );
+	option.setTextContent( 'Default theme' );
+	option.onClick( function () {
+
+		editor.setTheme( 'css/visualizer.css' );
+		editor.config.setKey( 'theme', 'css/visualizer.css' );
+
+	} );
+	options.add( option );
+
 	// Light theme
 
 	var option = new UI.Panel();
 	option.setClass( 'option' );
-	option.setTextContent( 'Light theme' );
+	option.setTextContent( 'Classic theme' );
 	option.onClick( function () {
 
 		editor.setTheme( 'css/light.css' );

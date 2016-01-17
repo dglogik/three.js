@@ -156,3 +156,38 @@ textarea, input { outline: none; } /* osx */
 .MeshPhongMaterial {
 	color: #ffaa88;
 }
+
+/* added for dglux */
+
+.sidebar-data-title {
+	white-space: nowrap;
+	text-overflow: clip;
+}
+
+.sidebar-data-flex {
+	display: flex;
+	width: 100%;
+}
+
+.sidebar-data-flex > input {
+	flex: 1;
+}
+
+.sidebar-data-flex > button {
+	margin-right: 36px;
+}
+
+.sidebar-data-flex-end {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.sidebar-data-entry {
+	width: 156px;
+	display: flex;
+	margin-right: 36px;
+}
+
+.sidebar-data-entry > select {
+	flex: 1;
+}

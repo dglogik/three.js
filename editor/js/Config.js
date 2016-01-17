@@ -8,7 +8,7 @@ var Config = function () {
 
 	var storage = {
 		'autosave': true,
-		'theme': 'css/light.css',
+		'theme': 'css/visualizer.css',
 
 		'project/renderer': 'WebGLRenderer',
 		'project/renderer/antialias': true,
@@ -21,7 +21,10 @@ var Config = function () {
 		'ui/sidebar/object3d/collapsed': false,
 		'ui/sidebar/project/collapsed': true,
 		'ui/sidebar/scene/collapsed': false,
-		'ui/sidebar/script/collapsed': true
+		'ui/sidebar/script/collapsed': true,
+
+		'ui/sidebar/data/collapsed': true,
+		'ui/sidebar/data/params': {}
 	};
 
 	if ( window.localStorage[ name ] === undefined ) {

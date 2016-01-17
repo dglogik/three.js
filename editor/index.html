@@ -77,6 +77,7 @@
 		<script src="js/libs/ui.three.js"></script>
 
 		<script src="js/libs/app.js"></script>
+		<script src="js/libs/dgframe.js"></script>
 		<script src="js/Player.js"></script>
 		<script src="js/Script.js"></script>
 
@@ -100,6 +101,7 @@
 		<script src="js/Menubar.Status.js"></script>
 		<script src="js/Sidebar.js"></script>
 		<script src="js/Sidebar.Project.js"></script>
+		<script src="js/Sidebar.Data.js"></script>
 		<script src="js/Sidebar.Scene.js"></script>
 		<script src="js/Sidebar.Object3D.js"></script>
 		<script src="js/Sidebar.Animation.js"></script>
@@ -309,12 +311,17 @@
 			}
 
 			window.addEventListener( 'message', function ( event ) {
+				if(event.data.dgIframe || event.data.dgIframeInit || event.data.dgIframeUpdate || event.data.dgIframe)
+					return;
 
 				editor.clear();
 				editor.fromJSON( event.data );
 
 			}, false );
 
+			window.postMessage({
+		    dgIframeInit: 1
+		  }, "*");
 		</script>
 	</body>
 </html>

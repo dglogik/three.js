@@ -259,6 +259,7 @@ var Viewport = function ( editor ) {
 		switch ( value ) {
 
 			case 'css/light.css':
+			case 'css/visualizer.css':
 				grid.setColors( 0x444444, 0x888888 );
 				clearColor = 0xaaaaaa;
 				break;

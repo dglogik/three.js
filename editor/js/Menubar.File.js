@@ -220,6 +220,7 @@ Menubar.File = function ( editor ) {
 			'	<body ontouchstart="">',
 			'		<script src="js/three.min.js"></script>',
 			'		<script src="js/app.js"></script>',
+			' 	<script src="js/dgframe.js"></script>',
 			'		<script>',
 			'',
 			'			var loader = new THREE.XHRLoader();',
@@ -271,6 +272,10 @@ Menubar.File = function ( editor ) {
 			zip.file( 'js/three.min.js', content );
 
 		} );
+
+		loader.load('../js/libs/dgframe.js', function(content) {
+			zip.file('js/dgframe.js', content);
+		});
 
 	} );
 	options.add( option );
