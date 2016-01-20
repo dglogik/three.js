@@ -63,7 +63,17 @@ Sidebar.Project = function ( editor ) {
 	rendererTypeRow.add( new UI.Text( 'Renderer' ).setWidth( '90px' ) );
 	rendererTypeRow.add( rendererType );
 
+	var row = new UI.Panel();
+
+	row.add(new UI.Text('Project Name').setWidth('90px').setClass('sidebar-data-title'));
+
+	var input = new UI.Input().setWidth('150px').onChange(function() {
+		config.setKey('ui/sidebar/project/name', input.getValue());
+	}).setValue(config.getKey('ui/sidebar/project/name'));
+	row.add(input);
+
 	container.add( rendererTypeRow );
+	container.add(row);
 
 	if ( config.getKey( 'project/renderer' ) !== undefined ) {
 

@@ -55,7 +55,7 @@ Sidebar.Data = function (editor) {
   }
 
   function updateData(name, value, type) {
-    updateParam(name, 'value', value);
+    updateParam(name, 'default', value);
 
     switch(type) {
       case 'string':
@@ -139,8 +139,8 @@ Sidebar.Data = function (editor) {
   dgframe.onReady(function() {
     Object.keys(params).forEach(function(key) {
       var param = params[key];
-      createData(key, param.value, param.type);
-      updateData(key, param.value, param.type);
+      createData(key, param.default, param.type);
+      updateData(key, param.default, param.type);
     });
   });
 

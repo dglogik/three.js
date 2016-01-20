@@ -202,7 +202,22 @@ Menubar.File = function ( editor ) {
 
 		var zip = new JSZip();
 
-		zip.file( 'index.html', [
+		var params = editor.config.getKey('ui/sidebar/data/params');
+		var values = [];
+
+		Object.keys(params).forEach(function(key) {
+			var param = params[key];
+			values.push({
+				name: key,
+				type: param.type,
+				'default': param.default
+			});
+		});
+
+		dgframe.dashboard.exportIFrameDashboard(
+				'assets/index.html', editor.config.getKey('ui/sidebar/project/name'), values, zip.file.bind(zip));
+
+		zip.file( 'assets/index.html', [
 
 			'<!DOCTYPE html>',
 			'<html lang="en">',
@@ -251,7 +266,7 @@ Menubar.File = function ( editor ) {
 		output = JSON.stringify( output, null, '\t' );
 		output = output.replace( /[\n\t]+([\d\.e\-\[\]]+)/g, '$1' );
 
-		zip.file( 'app.json', output );
+		zip.file( 'assets/app.json', output );
 
 		//
 
@@ -264,17 +279,17 @@ Menubar.File = function ( editor ) {
 		var loader = new THREE.XHRLoader( manager );
 		loader.load( 'js/libs/app.js', function ( content ) {
 
-			zip.file( 'js/app.js', content );
+			zip.file( 'assets/js/app.js', content );
 
 		} );
 		loader.load( '../build/three.min.js', function ( content ) {
 
-			zip.file( 'js/three.min.js', content );
+			zip.file( 'assets/js/three.min.js', content );
 
 		} );
 
-		loader.load('../js/libs/dgframe.js', function(content) {
-			zip.file('js/dgframe.js', content);
+		loader.load('js/libs/dgframe.js', function(content) {
+			zip.file('assets/js/dgframe.js', content);
 		});
 
 	} );

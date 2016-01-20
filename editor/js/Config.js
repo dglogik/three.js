@@ -24,7 +24,8 @@ var Config = function () {
 		'ui/sidebar/script/collapsed': true,
 
 		'ui/sidebar/data/collapsed': true,
-		'ui/sidebar/data/params': {}
+		'ui/sidebar/data/params': {},
+		'ui/sidebar/project/name': 'three.js'
 	};
 
 	if ( window.localStorage[ name ] === undefined ) {
