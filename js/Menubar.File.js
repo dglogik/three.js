@@ -234,6 +234,7 @@ Menubar.File = function ( editor ) {
 			'	</head>',
 			'	<body ontouchstart="">',
 			'		<script src="js/three.min.js"></script>',
+			'		<script src="js/orbit.js"></script>',
 			'		<script src="js/app.js"></script>',
 			' 	<script src="js/dgframe.js"></script>',
 			'		<script>',
@@ -282,11 +283,16 @@ Menubar.File = function ( editor ) {
 			zip.file( 'assets/js/app.js', content );
 
 		} );
-		loader.load( '../build/three.min.js', function ( content ) {
+
+		loader.load( 'js/libs/three.min.js', function ( content ) {
 
 			zip.file( 'assets/js/three.min.js', content );
 
 		} );
+
+		loader.load('js/controls/OrbitControls.js', function(content) {
+			zip.file('assets/js/orbit.js', content);
+		});
 
 		loader.load('js/libs/dgframe.js', function(content) {
 			zip.file('assets/js/dgframe.js', content);

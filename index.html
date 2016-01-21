@@ -83,6 +83,7 @@
 
 		<script src="js/effects/VREffect.js"></script>
 		<script src="js/controls/VRControls.js"></script>
+		<script src="js/controls/OrbitControls.js"></script>
 
 		<script src="js/Storage.js"></script>
 
@@ -129,6 +130,8 @@
 
 			window.URL = window.URL || window.webkitURL;
 			window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
+
+			window.isThreeEditor = true;
 
 			Number.prototype.format = function (){
 				return this.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");

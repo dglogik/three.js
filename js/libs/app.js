@@ -11,7 +11,7 @@ var APP = {
 		var loader = new THREE.ObjectLoader();
 		var camera, scene, renderer;
 
-		var vr, controls, effect;
+		var vr, orbit, controls, effect;
 
 		var events = {};
 
@@ -23,9 +23,10 @@ var APP = {
 		this.load = function ( json ) {
 
 			vr = json.project.vr;
+			orbit = json.project.orbit;
 
-			renderer = new THREE.WebGLRenderer( { antialias: true } );
-			renderer.setClearColor( 0x000000 );
+			renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+			renderer.setClearColor( 0x000000, window.isThreeEditor ? 1.0 : 0 );
 			renderer.setPixelRatio( window.devicePixelRatio );
 			if ( json.project.shadows ) renderer.shadowMap.enabled = true;
 			this.dom = renderer.domElement;
@@ -99,14 +100,22 @@ var APP = {
 			camera.aspect = this.width / this.height;
 			camera.updateProjectionMatrix();
 
-			if ( vr === true ) {
-
-				if ( camera.parent === null ) {
-
+			if (orbit) {
+				if(!camera.parent) {
 					// camera needs to be in the scene so camera2 matrix updates
+					scene.add(camera);
+				}
 
+				controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+				controls.enableDamping = true;
+				controls.dampingFactor = 0.25;
+			}
+
+			if(vr) {
+				if(!camera.parent) {
+					// camera needs to be in the scene so camera2 matrix updates
 					scene.add( camera );
-
 				}
 
 				var camera2 = camera.clone();
@@ -189,7 +198,8 @@ var APP = {
 				effect.render( scene, camera );
 
 			} else {
-
+				if(orbit)
+					controls.update();
 				renderer.render( scene, camera );
 
 			}

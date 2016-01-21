@@ -118,18 +118,40 @@ Sidebar.Project = function ( editor ) {
 
 	// VR
 
+	var vr, orbit;
+
 	var vrRow = new UI.Panel();
-	var vr = new UI.Checkbox( config.getKey( 'project/vr' ) ).setLeft( '100px' ).onChange( function () {
+	vr = new UI.Checkbox( config.getKey( 'project/vr' ) ).setLeft( '100px' ).onChange( function () {
 
 		config.setKey( 'project/vr', this.getValue() );
 		// updateRenderer();
-
+		if(orbit.getValue()) {
+			orbit.setValue(false);
+			config.setKey('project/orbit', false);
+		}
 	} );
 
 	vrRow.add( new UI.Text( 'VR' ).setWidth( '90px' ) );
 	vrRow.add( vr );
 
 	container.add( vrRow );
+
+	// ORBIT
+
+	var orbitRow = new UI.Panel();
+	orbit = new UI.Checkbox(config.getKey('project/orbit')).setLeft('100px').onChange(function() {
+		config.setKey('project/orbit', this.getValue());
+
+		if(vr.getValue()) {
+			vr.setValue(false);
+			config.setKey('project/vr', false);
+		}
+	});
+
+	orbitRow.add(new UI.Text('ORBIT').setWidth('90px'));
+	orbitRow.add(orbit);
+
+	container.add(orbitRow);
 
 	//
 

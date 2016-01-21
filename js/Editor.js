@@ -463,7 +463,8 @@ Editor.prototype = {
 
 			project: {
 				shadows: this.config.getKey( 'project/renderer/shadows' ),
-				vr: this.config.getKey( 'project/vr' )
+				vr: this.config.getKey( 'project/vr' ),
+				orbit: this.config.getKey('project/orbit')
 			},
 			camera: this.camera.toJSON(),
 			scene: this.scene.toJSON(),
