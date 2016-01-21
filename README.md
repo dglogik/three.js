@@ -1,3 +1,10 @@
+This is a modified version of the three.js interface for the purposes of
+DGLogik and it's main product DGLux. Original README can be found below, as well
+as the LICENSE information in LICENSE (MIT). Thank you to Mr.doob as well as
+all contributors of three.js for sustaining the project and the editor.
+
+---
+
 three.js
 ========
 
@@ -31,7 +38,7 @@ This code creates a scene, a camera, and a geometric cube, and it adds the cube 
 	function init() {
 
 		scene = new THREE.Scene();
-		
+
 		camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 		camera.position.z = 1000;
 
